@@ -9,8 +9,9 @@
 - On est le 15.03.2026, je continue le GDQuest 
 
 ## Séance 3
-- 
-
+- Je continue avec mon projet, je doit apprendre comment programmer en GDscript, ce qui prends un peut de temps. Je regarde plusieur vidéos youtube(https://www.youtube.com/watch?v=BngLl1GsYOU) et fait le GDquest. 
+  
+- Dans les dérniers jours j'ai continué avec mon projet, j'ai choisi le design, j'ai déja commoncé a construire un monde et j'ai aussi fait un charactère
 ## Séance 4
 - 
 
