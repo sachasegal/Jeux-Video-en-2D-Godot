@@ -15,7 +15,9 @@
 ## Séance 4
 - J'ai eu quelques problèmes avec mon projet, car même avec le bon script pour le joueur, celui-ci ne bougeait pas. J'ai recommencé depuis le début pour que ça marche denouveau
 et maintenant il bouge.
-- j'ai ajouté des coins que le joueur peut ramasser, avec une physics layer j'ai installé que le coin est conté que quand le joueur le touche et pas une platforme, par exemple.
+- j'ai ajouté des coins que le joueur peut ramasser, avec une physics layer j'ai installé que le coin est conté que quand le joueur le touche et pas une platforme, par exemple. 
+Avec la fonction "queue_free()" on peut programmer que, dans ce cas, le coin disparait quand le joueur le touche 
+j'ai crée une Killzone, en dessous de la map. Quand le joueur rentre dans la killzone, il y a un timer qui start, après 0.6 seconde la scène se recharge/reload et le joueur respawn au début
 
 ## Séance 5
-- 
+- j'essaye de rajouter un Scorebord pour les Coins, mais je n'y arrive pas. Je cherche des vidéos sur youtube 
