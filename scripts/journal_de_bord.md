@@ -21,3 +21,4 @@ j'ai crée une Killzone, en dessous de la map. Quand le joueur rentre dans la ki
 
 ## Séance 5
 - j'essaye de rajouter un Scorebord pour les Coins, mais je n'y arrive pas. Je cherche des vidéos sur youtube 
+- le 14, 15 et 16 mai je continue mon projet, j'ai ajouté des coeurs et un enemi. j'ai des difficultés pour installer que quand le joueur touche l'enemi ne meurt pas directement, mai une vie disparrait
