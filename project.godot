@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Jeux vidéo Jump and Run 2D TM"
-run/main_scene="uid://b7q7yqllyj0ge"
+run/main_scene="uid://bdw0kypussb11"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Music="*res://scenes/music.tscn"
+player="*res://scenes/player.tscn"
 
 [display]
 
