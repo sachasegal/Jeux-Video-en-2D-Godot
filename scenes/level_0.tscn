@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bdw0kypussb11"]
+[gd_scene load_steps=22 format=4 uid="uid://bdw0kypussb11"]
 
 [ext_resource type="Script" uid="uid://c2wf7106kipiq" path="res://scripts/game_manager.gd" id="1_ll25s"]
 [ext_resource type="Texture2D" uid="uid://bryfrorr1mhla" path="res://assets/sprites/Item 3-1.png.png" id="2_sk60w"]
@@ -10,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://eg6l54neyn71" path="res://scenes/platform.tscn" id="8_44yx7"]
 [ext_resource type="PackedScene" uid="uid://bximjtau5vrxd" path="res://scenes/Enemy.tscn" id="9_lbrgs"]
 [ext_resource type="PackedScene" uid="uid://bu2jumbtn10yh" path="res://scenes/next_level.tscn" id="10_ll25s"]
-
-[sub_resource type="GDScript" id="GDScript_jv3i5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feb5d"]
 texture = ExtResource("3_om4r1")
@@ -516,7 +514,6 @@ _data = {
 
 [node name="level_0" type="Node2D"]
 position = Vector2(1, -1)
-script = SubResource("GDScript_jv3i5")
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -623,13 +620,17 @@ autoplay = "move_up"
 [node name="Enemy" parent="." instance=ExtResource("9_lbrgs")]
 position = Vector2(863, -195)
 
+[node name="Player" parent="." instance=ExtResource("5_e8wc3")]
+position = Vector2(-6, -1)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+
 [node name="Area2D" parent="." instance=ExtResource("10_ll25s")]
 position = Vector2(1385, -209)
 
-[node name="Area2D2" parent="." instance=ExtResource("10_ll25s")]
-position = Vector2(87, -32)
+[node name="next_level" parent="." instance=ExtResource("10_ll25s")]
+position = Vector2(81, -30)
 
-[node name="Player" parent="." instance=ExtResource("5_e8wc3")]
-position = Vector2(-30, 0)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Enemy2" parent="." instance=ExtResource("9_lbrgs")]
+position = Vector2(-149, -2)
