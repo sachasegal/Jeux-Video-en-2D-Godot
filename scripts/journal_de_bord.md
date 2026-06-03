@@ -24,3 +24,6 @@ j'ai crée une Killzone, en dessous de la map. Quand le joueur rentre dans la ki
 - le 14, 15 et 16 mai je continue mon projet, j'ai ajouté des coeurs et un enemi. j'ai des difficultés pour installer que quand le joueur touche l'enemi ne meurt pas directement, mai une vie disparrait
 - https://www.youtube.com/watch?v=GZrALMvOwY8
 - https://www.youtube.com/watch?v=BZXY0TuI0F0
+- https://www.youtube.com/watch?v=9u59U-DWNJs
+
+- entre le 25 Mai et le 3 Juin j'ai avancé, j'ai installé un menu entre les niveau et au début, je suis entrain d'essayer d'installer un système pour améliorer le joueur en dépensant des coins

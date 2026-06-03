@@ -129,14 +129,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_oq86d"]
 radius = 68.007355
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ft8do"]
-radius = 6.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_55jtl"]
 radius = 8.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpr68"]
+radius = 7.0
+
 [node name="Enemy" type="CharacterBody2D"]
-motion_mode = 1
+collision_mask = 4
 wall_min_slide_angle = 0.0
 script = ExtResource("1_55jtl")
 
@@ -149,15 +149,12 @@ frame_progress = 0.4864404
 offset = Vector2(0, -6)
 
 [node name="detection_area" type="Area2D" parent="."]
+position = Vector2(0, -3)
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_oq86d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_ft8do")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-4, -2)
@@ -167,14 +164,10 @@ collision_layer = 4
 position = Vector2(4, -1)
 shape = SubResource("CircleShape2D_55jtl")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_mpr68")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

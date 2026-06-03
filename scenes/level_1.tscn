@@ -1,6 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://wilgmd810eey"]
+[gd_scene load_steps=8 format=3 uid="uid://wilgmd810eey"]
 
-[ext_resource type="Script" uid="uid://d0qcvf21hu21e" path="res://scenes/level_1.gd" id="1_014kd"]
+[ext_resource type="Script" uid="uid://d0qcvf21hu21e" path="res://scripts/level_1.gd" id="1_014kd"]
+[ext_resource type="Texture2D" uid="uid://csmq1fijey3hn" path="res://Screenshots/Screenshot 2026-06-01 095618.png" id="2_bswci"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bswci"]
+texture = ExtResource("2_bswci")
+modulate_color = Color(0.3854925, 0.38549247, 0.38549247, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7cgcr"]
 bg_color = Color(1, 1, 1, 1)
@@ -45,6 +50,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_014kd")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1242.5
+offset_top = -804.0
+offset_right = 1242.5
+offset_bottom = 804.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bswci")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -52,10 +72,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = -209.0
-offset_right = 224.0
-offset_bottom = 209.0
+offset_left = -281.0
+offset_top = -249.0
+offset_right = 281.0
+offset_bottom = 249.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 17

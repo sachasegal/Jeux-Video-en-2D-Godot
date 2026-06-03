@@ -1,22 +1,50 @@
 extends CharacterBody2D
 
-const speed = 20
 
 
-@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var player = get_tree().get_first_node_in_group("Payer")
+var speed = 35
+var player_chase = false
+var player = null
 
 func _physics_process(delta: float) -> void:
-	var direction = to_local(nav_agent.get_next_path_position()).normalized()
-	velocity = direction * speed
-	move_and_slide()
+	if player_chase:
+		position.x += (player.position.x - position.x)/speed 
 	
-func makepath() -> void:
-	nav_agent.target_position = player.global_position
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
+		$AnimatedSprite2D.play("walk")
+		
+		
+	
+	else:
+		$AnimatedSprite2D.play("idle")
+		
+		move_and_collide(Vector2(0,0))
+	
+
+
+
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	player = body
+	player_chase = true
+	
+
+	
+	
+	
+	
+	
+	
+
+
+func _on_detection_area_body_exited(body: Node2D) -> void:
+	player = null
+	player_chase = false
+
+
 		
 
 
-func _on_timer_timeout() -> void:
-	makepath()
-	
+
 	
