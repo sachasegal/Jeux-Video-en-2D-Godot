@@ -9,6 +9,8 @@ func decrease_health():
 	if(lives == 0):
 		get_tree().reload_current_scene()
 
+
+
 @onready var score_label: Label = $CanvasLayer/ScoreLabel
 
 func add_point():
