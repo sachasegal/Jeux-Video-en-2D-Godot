@@ -1,6 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://pyk6grko5nrq"]
+[gd_scene load_steps=13 format=3 uid="uid://pyk6grko5nrq"]
 
+[ext_resource type="Script" uid="uid://c32vxem4jvumb" path="res://scenes/shop_scene.gd" id="1_fdhsn"]
 [ext_resource type="Texture2D" uid="uid://cva4kqu8wcxcq" path="res://Screenshots/Screenshot 2026-06-03 185958.png" id="1_r1uou"]
+[ext_resource type="Texture2D" uid="uid://b523uim1ey1m7" path="res://Screenshots/Screenshot 2026-06-03 193724-1.png.png" id="2_p7evi"]
+[ext_resource type="Texture2D" uid="uid://cxxyjffqu6tuu" path="res://Screenshots/Screenshot 2026-06-03 193724-1.png (1).png" id="3_hovpq"]
+[ext_resource type="Texture2D" uid="uid://kng45ywa16rb" path="res://Screenshots/Screenshot 2026-06-03 193724-1.png (2).png" id="4_ykrk4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ykrk4"]
+texture = ExtResource("2_p7evi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fdhsn"]
+texture = ExtResource("3_hovpq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tvdqs"]
+texture = ExtResource("4_ykrk4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hovpq"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.24313726)
+shadow_size = 4
+shadow_offset = Vector2(0, 2.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykrk4"]
+bg_color = Color(0.46229059, 0.46229059, 0.46229059, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.24313726)
+shadow_size = 4
+shadow_offset = Vector2(0, 2.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdhsn"]
+bg_color = Color(0.68513334, 0.7066535, 0.6894512, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.24313726)
+shadow_size = 4
+shadow_offset = Vector2(0, 2.5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tvdqs"]
 
 [node name="ShopScene" type="Control"]
 layout_mode = 3
@@ -9,14 +54,170 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fdhsn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -11.0
+offset_top = -2.0
+offset_right = 4924.0
+offset_bottom = 3706.0
 texture = ExtResource("1_r1uou")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Panels" type="Node" parent="."]
+
+[node name="Panel" type="Panel" parent="Panels"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -185.5
+offset_right = 392.0
+offset_bottom = 185.5
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ykrk4")
+
+[node name="Panel2" type="Panel" parent="Panels"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -185.5
+offset_right = 196.0
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fdhsn")
+
+[node name="Panel3" type="Panel" parent="Panels"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -392.0
+offset_top = -185.5
+offset_bottom = 185.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tvdqs")
+
+[node name="Labels" type="Node" parent="."]
+
+[node name="Heart" type="Label" parent="Labels"]
+offset_left = 38.0
+offset_top = 510.0
+offset_right = 283.0
+offset_bottom = 600.0
+theme_override_colors/font_color = Color(0.7943986, 3.2247603e-06, 9.62615e-07, 1)
+theme_override_font_sizes/font_size = 65
+text = "    Heart"
+
+[node name="Speed" type="Label" parent="Labels"]
+offset_left = 480.0
+offset_top = 514.0
+offset_right = 740.0
+offset_bottom = 604.0
+theme_override_colors/font_color = Color(0, 0.78039217, 1, 1)
+theme_override_font_sizes/font_size = 65
+text = "    Speed"
+
+[node name="Damage" type="Label" parent="Labels"]
+offset_left = 876.0
+offset_top = 514.0
+offset_right = 1203.0
+offset_bottom = 604.0
+theme_override_colors/font_color = Color(0.95686275, 0, 0, 1)
+theme_override_font_sizes/font_size = 65
+text = "    Damage"
+
+[node name="Upgrades" type="Label" parent="Labels"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -209.0
+offset_right = 209.0
+offset_bottom = 223.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "UPGRADES
+"
+
+[node name="ScoreLabel" type="Label" parent="Labels"]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+offset_right = 150.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 40
+text = "Coins: 0"
+
+[node name="Buttons to buy" type="Node" parent="."]
+
+[node name="buy_heart" type="Button" parent="Buttons to buy"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+offset_right = 298.0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_hovpq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ykrk4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fdhsn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tvdqs")
+text = "Buy"
+
+[node name="buy_speed" type="Button" parent="Buttons to buy"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -149.0
+offset_top = -72.0
+offset_right = 149.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_hovpq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ykrk4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fdhsn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tvdqs")
+text = "Buy"
+
+[node name="buy_strength" type="Button" parent="Buttons to buy"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -72.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_hovpq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ykrk4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fdhsn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tvdqs")
+text = "Buy"
+
+[connection signal="pressed" from="Buttons to buy/buy_heart" to="." method="_on_buy_heart_pressed"]
+[connection signal="pressed" from="Buttons to buy/buy_speed" to="." method="_on_buy_speed_pressed"]
+[connection signal="pressed" from="Buttons to buy/buy_strength" to="." method="_on_buy_strength_pressed"]

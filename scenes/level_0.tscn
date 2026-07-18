@@ -476,6 +476,7 @@ sources/0 = SubResource("TileSetAtlasSource_iywne")
 
 [sub_resource type="Animation" id="Animation_gee14"]
 length = 0.001
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -515,9 +516,10 @@ _data = {
 [node name="level_0" type="Node2D"]
 position = Vector2(1, -1)
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("hearts")]
 unique_name_in_owner = true
 script = ExtResource("1_ll25s")
+hearts = [NodePath("CanvasLayer/Hearts/HBoxContainer/Heart"), NodePath("CanvasLayer/Hearts/HBoxContainer/Heart2"), NodePath("CanvasLayer/Hearts/HBoxContainer/Heart3")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
@@ -532,8 +534,8 @@ text = "Coins: 0"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -206.0
-offset_bottom = 54.0
+offset_left = -231.0
+offset_bottom = 87.0
 grow_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameManager/CanvasLayer/Hearts"]
@@ -620,16 +622,16 @@ autoplay = "move_up"
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("9_lbrgs")]
-position = Vector2(864, -196)
+position = Vector2(865, -196)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("9_lbrgs")]
-position = Vector2(-148, -3)
+position = Vector2(-118, -4)
 
 [node name="Player" parent="." instance=ExtResource("5_e8wc3")]
 position = Vector2(-6, -1)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+zoom = Vector2(5, 5)
 
 [node name="Area2D" parent="." instance=ExtResource("10_ll25s")]
 position = Vector2(1385, -209)

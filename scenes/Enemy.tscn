@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bximjtau5vrxd"]
+[gd_scene load_steps=24 format=3 uid="uid://bximjtau5vrxd"]
 
 [ext_resource type="Texture2D" uid="uid://cx4nedeqar8pd" path="res://assets/sprites/enemies sprites/slime.png" id="1_3gvst"]
 [ext_resource type="Script" uid="uid://c3fk8cmnvaive" path="res://scripts/enemy.gd" id="1_55jtl"]
+[ext_resource type="Texture2D" uid="uid://doof7gd8yduu1" path="res://assets/sprites/New Piskel (1).png" id="3_mpr68"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55jtl"]
 atlas = ExtResource("1_3gvst")
@@ -135,17 +136,18 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_mpr68"]
 radius = 7.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ft8do"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 4
 wall_min_slide_angle = 0.0
 script = ExtResource("1_55jtl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_ksmwx")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.4864404
 offset = Vector2(0, -6)
 
 [node name="detection_area" type="Area2D" parent="."]
@@ -168,7 +170,33 @@ shape = SubResource("CircleShape2D_55jtl")
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_mpr68")
 
+[node name="enemy_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_ft8do")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -33.0
+offset_top = -39.0
+offset_right = 31.0
+offset_bottom = -7.0
+theme_override_constants/separation = -16
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_mpr68")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_mpr68")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_mpr68")
+
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
-[connection signal="body_entered" from="Hurt_Area" to="." method="_on_hurt_area_body_entered"]
 [connection signal="body_entered" from="Hurt_Area" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Hurt_Area" to="." method="_on_hurt_area_body_entered"]
+[connection signal="body_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]

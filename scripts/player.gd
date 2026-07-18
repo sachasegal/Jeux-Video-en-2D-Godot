@@ -1,13 +1,15 @@
 extends CharacterBody2D
 
+var can_attack: bool = true
+var attack_cooldown: float = 0.4
 
-const SPEED = 130
+var SPEED = 130
 const JUMP_VELOCITY = -300.0
 
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-
+@onready var timer: Timer = $Timer
 	
 	
 func _physics_process(delta: float) -> void:
@@ -44,5 +46,17 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-	
-	
+
+
+
+func _input(event):
+	if event.is_action_pressed("attack_ennemy"):
+		$AnimatedSprite2D.play("attack")
+		timer.start()
+		
+	if event.is_action_pressed("shoot_enemy"):
+		$AnimatedSprite2D.play("shoot")
+
+
+func _on_timer_timeout() -> void:
+	$AnimatedSprite2D.play("Idle")
