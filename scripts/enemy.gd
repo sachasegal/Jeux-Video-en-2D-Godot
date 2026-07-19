@@ -8,7 +8,7 @@ var health: int = 3
 var speed = 35
 var player_chase = false
 var player = null
-var ennemy_live = 3
+var enemy_live = 3
 
 func _physics_process(delta: float) -> void:
 	if player_chase:
@@ -51,8 +51,8 @@ func _on_enemy_hitbox_body_entered(body: Node2D) -> void:
 		
 func _input(event: InputEvent) -> void:
 	if is_player_inside and event.is_action_pressed("attack_ennemy"):
-		ennemy_live -= 1
-		if ennemy_live == 0:
+		enemy_live -= 1
+		if enemy_live == 0:
 			$AnimatedSprite2D.play("death")
 			queue_free()
-			
+		

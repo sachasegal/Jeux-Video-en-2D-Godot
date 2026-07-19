@@ -3,7 +3,7 @@ extends CharacterBody2D
 var can_attack: bool = true
 var attack_cooldown: float = 0.4
 
-var SPEED = 130
+var SPEED = Global.SPEED
 const JUMP_VELOCITY = -300.0
 
 
@@ -54,8 +54,6 @@ func _input(event):
 		$AnimatedSprite2D.play("attack")
 		timer.start()
 		
-	if event.is_action_pressed("shoot_enemy"):
-		$AnimatedSprite2D.play("shoot")
 
 
 func _on_timer_timeout() -> void:

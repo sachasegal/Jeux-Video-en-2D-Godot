@@ -4,9 +4,8 @@ extends Node
 
 @export var hearts : Array[Node]
 @onready var animation_player: AnimationPlayer = $AnimatedSprite2D
-@onready var player = %Player
 
-
+@onready var player = get_node("../Player")
 var score = 0
 var lives = 3
 
