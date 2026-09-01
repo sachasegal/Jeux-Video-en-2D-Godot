@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://2nlxl01x1spe"]
+[gd_scene load_steps=18 format=4 uid="uid://2nlxl01x1spe"]
 
 [ext_resource type="Texture2D" uid="uid://c06d0lhcc00fb" path="res://assets/sprites/world_tileset.png" id="1_eqxsl"]
+[ext_resource type="Script" uid="uid://bxyvaqsln0dv8" path="res://scenes/level_2.gd" id="1_hey2k"]
 [ext_resource type="Texture2D" uid="uid://bnecckdm2r3nm" path="res://assets/sprites/ChangeLevelDoor.png" id="2_b4j7a"]
+[ext_resource type="Script" uid="uid://dv04cbd1kodtr" path="res://scenes/coins_label2.gd" id="2_que50"]
 [ext_resource type="PackedScene" uid="uid://ci72av0ww2ge6" path="res://scenes/player.tscn" id="3_wo48x"]
 [ext_resource type="PackedScene" uid="uid://ba7dv5cntevay" path="res://scenes/killzone.tscn" id="4_y0kc7"]
 [ext_resource type="PackedScene" uid="uid://ciiho20mm7iso" path="res://scenes/coin.tscn" id="5_y0kc7"]
@@ -319,6 +321,7 @@ texture = ExtResource("1_eqxsl")
 sources/0 = SubResource("TileSetAtlasSource_ne2mo")
 
 [node name="level_2" type="Node2D"]
+script = ExtResource("1_hey2k")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("hearts")]
 unique_name_in_owner = true
@@ -327,12 +330,14 @@ hearts = [NodePath("CanvasLayer/Hearts/HBoxContainer/Heart"), NodePath("CanvasLa
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
-[node name="ScoreLabel" type="Label" parent="GameManager/CanvasLayer"]
+[node name="CoinsLabel" type="Label" parent="GameManager/CanvasLayer"]
+unique_name_in_owner = true
 modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 40
 text = "Coins: 0"
+script = ExtResource("2_que50")
 
 [node name="Hearts" type="Panel" parent="GameManager/CanvasLayer"]
 anchors_preset = 1
@@ -434,6 +439,3 @@ position = Vector2(515, -512)
 
 [node name="next_level_door" parent="." instance=ExtResource("9_6cvei")]
 position = Vector2(824, -656)
-
-[node name="next_level_door2" parent="." instance=ExtResource("9_6cvei")]
-position = Vector2(129, 32)

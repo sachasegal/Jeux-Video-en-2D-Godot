@@ -29,3 +29,4 @@ j'ai crée une Killzone, en dessous de la map. Quand le joueur rentre dans la ki
 - entre le 25 Mai et le 3 Juin j'ai avancé, j'ai installé un menu entre les niveauau début, je suis entrain d'essayer d'installer un sy et stème pour améliorer le joueur en dépensant des coins
 - dans les dernières semaines j'ai continué à écrire la partie théorique de mn TM
 - Le 18.07 et 19.07 j'ai continué sur Godot, j'ai ajouté un système d'achat pour la vitesse du joueur et je suis entrain d'essayer de faire la même chose pour ces coeurs.
+- le 28.07 j'ai résoud deux problèmes avec mon ennemi,il passait entre les blocs et n'avait pas de gravité

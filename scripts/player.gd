@@ -58,3 +58,12 @@ func _input(event):
 
 func _on_timer_timeout() -> void:
 	$AnimatedSprite2D.play("Idle")
+	
+	
+
+
+
+	
+	
+	
+	

@@ -4,12 +4,17 @@ extends Node
 
 @export var hearts : Array[Node]
 @onready var animation_player: AnimationPlayer = $AnimatedSprite2D
+var score_label: Label = null
 
 @onready var player = get_node("../Player")
 var score = 0
 var lives = 3
 
+
+
 func decrease_health():
+	if lives <= 0:
+		return
 	lives -= 1
 	print(lives)
 	for h in 3:
@@ -17,25 +22,37 @@ func decrease_health():
 			hearts[h].show()
 		else:
 			hearts[h].hide()
+			
 		
 			
-	if(lives == 0):
+	if lives <= 0:
+		lives = 3
 		get_tree().reload_current_scene()
 
 
 
-@onready var score_label: Label = $CanvasLayer/ScoreLabel
+
 
 func add_point():
 	score += 1
-	score_label.text = "Coins: " + str(score) 
+	if score_label:
+		score_label.text = "Coins: " + str(score)
 	
 func spend_coins(amount):
 	if score >= amount:
 		score -= amount
-		score_label.text = "Coins: " + str(score)
+		if score_label:
+			score_label.text = "Coins: " + str(score)
 		return true
 	return false
+	
+	if score < amount:
+		print("You don't have enough coins")
+		return false
+	else:
+		score -= amount
+		score_label.text = "Coins: " + str(score)
+		return true
 	
 
 func attack_ennemy():

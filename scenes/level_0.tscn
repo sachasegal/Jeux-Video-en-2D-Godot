@@ -1,12 +1,13 @@
-[gd_scene load_steps=24 format=4 uid="uid://bdw0kypussb11"]
+[gd_scene load_steps=25 format=4 uid="uid://bdw0kypussb11"]
 
+[ext_resource type="Script" uid="uid://da0kw06vl74dg" path="res://scenes/level_0.gd" id="1_171oe"]
 [ext_resource type="Script" uid="uid://c2wf7106kipiq" path="res://scripts/game_manager.gd" id="1_ll25s"]
+[ext_resource type="Script" uid="uid://chc20sbp85mg1" path="res://scenes/coins_label.gd" id="2_171oe"]
 [ext_resource type="Texture2D" uid="uid://bryfrorr1mhla" path="res://assets/sprites/Item 3-1.png.png" id="2_sk60w"]
 [ext_resource type="Script" uid="uid://ccp5hdm8aevu8" path="res://scenes/all_enemies.gd" id="3_171oe"]
 [ext_resource type="Texture2D" uid="uid://c06d0lhcc00fb" path="res://assets/sprites/world_tileset.png" id="3_om4r1"]
 [ext_resource type="Texture2D" uid="uid://bnecckdm2r3nm" path="res://assets/sprites/ChangeLevelDoor.png" id="4_171oe"]
 [ext_resource type="PackedScene" uid="uid://ci72av0ww2ge6" path="res://scenes/player.tscn" id="5_e8wc3"]
-[ext_resource type="Texture2D" uid="uid://doof7gd8yduu1" path="res://assets/sprites/New Piskel (1).png" id="5_ypn4w"]
 [ext_resource type="PackedScene" uid="uid://ba7dv5cntevay" path="res://scenes/killzone.tscn" id="6_ypn4w"]
 [ext_resource type="PackedScene" uid="uid://ciiho20mm7iso" path="res://scenes/coin.tscn" id="7_vc1y7"]
 [ext_resource type="PackedScene" uid="uid://eg6l54neyn71" path="res://scenes/platform.tscn" id="8_44yx7"]
@@ -517,6 +518,7 @@ _data = {
 
 [node name="level_0" type="Node2D"]
 position = Vector2(1, -1)
+script = ExtResource("1_171oe")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("hearts")]
 unique_name_in_owner = true
@@ -525,12 +527,14 @@ hearts = [NodePath("CanvasLayer/Hearts/HBoxContainer/Heart"), NodePath("CanvasLa
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
-[node name="ScoreLabel" type="Label" parent="GameManager/CanvasLayer"]
+[node name="CoinsLabel" type="Label" parent="GameManager/CanvasLayer"]
+unique_name_in_owner = true
 modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
 offset_right = 150.0
 offset_bottom = 55.0
 theme_override_font_sizes/font_size = 40
 text = "Coins: 0"
+script = ExtResource("2_171oe")
 
 [node name="Hearts" type="Panel" parent="GameManager/CanvasLayer"]
 anchors_preset = 1
@@ -571,34 +575,13 @@ expand_mode = 2
 
 [node name="all_enemies" type="Node" parent="." node_paths=PackedStringArray("hearts")]
 script = ExtResource("3_171oe")
-hearts = [NodePath("Enemy_heart/HBoxContainer/TextureRect"), NodePath("Enemy_heart/HBoxContainer/TextureRect2"), NodePath("Enemy_heart/HBoxContainer/TextureRect3")]
+hearts = [NodePath(""), NodePath(""), NodePath("")]
 
 [node name="Enemy" parent="all_enemies" instance=ExtResource("9_lbrgs")]
-position = Vector2(865, -196)
+position = Vector2(865, -194)
 
 [node name="Enemy2" parent="all_enemies" instance=ExtResource("9_lbrgs")]
-position = Vector2(-118, -4)
-
-[node name="Enemy_heart" type="Panel" parent="all_enemies"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="all_enemies/Enemy_heart"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="all_enemies/Enemy_heart/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_ypn4w")
-
-[node name="TextureRect2" type="TextureRect" parent="all_enemies/Enemy_heart/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_ypn4w")
-
-[node name="TextureRect3" type="TextureRect" parent="all_enemies/Enemy_heart/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_ypn4w")
+position = Vector2(-118, -2)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-239, -1)

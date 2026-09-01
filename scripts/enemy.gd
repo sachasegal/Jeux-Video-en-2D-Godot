@@ -1,18 +1,24 @@
 extends CharacterBody2D
 
 @export var hearts : Array[Node]
-@onready var game_manager = %GameManager
+
 
 var is_player_inside = false
 var health: int = 3
-var speed = 35
+var speed = 6
 var player_chase = false
 var player = null
 var enemy_live = 3
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		velocity.y = 0
+		
 	if player_chase:
-		position.x += (player.position.x - position.x)/speed 
+		velocity.x = (player.position.x - position.x) / speed * 10 
 		
 		$AnimatedSprite2D.play("walk")
 		
@@ -24,6 +30,8 @@ func _physics_process(delta: float) -> void:
 	
 	else:
 		$AnimatedSprite2D.play("idle")
+		velocity.x = 0
+	move_and_slide()
 		
 		
 
@@ -39,7 +47,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 
 func _on_hurt_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		game_manager.decrease_health()
+		GameManager.decrease_health()
 		
 
 
@@ -52,6 +60,7 @@ func _on_enemy_hitbox_body_entered(body: Node2D) -> void:
 func _input(event: InputEvent) -> void:
 	if is_player_inside and event.is_action_pressed("attack_ennemy"):
 		enemy_live -= 1
+		hearts[enemy_live].hide()
 		if enemy_live == 0:
 			$AnimatedSprite2D.play("death")
 			queue_free()

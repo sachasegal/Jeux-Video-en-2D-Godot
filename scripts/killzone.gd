@@ -9,4 +9,5 @@ func _on_body_entered(body: Node2D) -> void:
 
 	
 func _on_timer_timeout() -> void:#runs when the timer ends
+	GameManager.score = 0
 	get_tree().reload_current_scene()

@@ -1,7 +1,9 @@
-[gd_scene load_steps=31 format=4 uid="uid://6t87iv758mq4"]
+[gd_scene load_steps=33 format=4 uid="uid://6t87iv758mq4"]
 
+[ext_resource type="Script" uid="uid://k6jbt61s8keo" path="res://scenes/level_4.gd" id="1_rr1tt"]
 [ext_resource type="Script" uid="uid://c2wf7106kipiq" path="res://scripts/game_manager.gd" id="1_yk4f3"]
 [ext_resource type="Texture2D" uid="uid://bryfrorr1mhla" path="res://assets/sprites/Item 3-1.png.png" id="2_cp0rv"]
+[ext_resource type="Script" uid="uid://dh0mmxmjmpiv6" path="res://scenes/coins_label4.gd" id="2_rr1tt"]
 [ext_resource type="Texture2D" uid="uid://c06d0lhcc00fb" path="res://assets/sprites/world_tileset.png" id="3_rr1tt"]
 [ext_resource type="Texture2D" uid="uid://bnecckdm2r3nm" path="res://assets/sprites/ChangeLevelDoor.png" id="4_7ewpb"]
 [ext_resource type="PackedScene" uid="uid://ba7dv5cntevay" path="res://scenes/killzone.tscn" id="5_py6g0"]
@@ -318,6 +320,21 @@ texture = ExtResource("3_rr1tt")
 [sub_resource type="TileSet" id="TileSet_6cvei"]
 sources/0 = SubResource("TileSetAtlasSource_ne2mo")
 
+[sub_resource type="Animation" id="Animation_66w8i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(464, 117)]
+}
+
 [sub_resource type="Animation" id="Animation_s24i2"]
 resource_name = "move_left_right"
 loop_mode = 2
@@ -334,7 +351,13 @@ tracks/0/keys = {
 "values": [Vector2(464, 117), Vector2(592, 117)]
 }
 
-[sub_resource type="Animation" id="Animation_66w8i"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_80qnk"]
+_data = {
+&"RESET": SubResource("Animation_66w8i"),
+&"move_left_right": SubResource("Animation_s24i2")
+}
+
+[sub_resource type="Animation" id="Animation_lj1an"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -346,13 +369,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(464, 117)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_80qnk"]
-_data = {
-&"RESET": SubResource("Animation_66w8i"),
-&"move_left_right": SubResource("Animation_s24i2")
+"values": [Vector2(704, 117)]
 }
 
 [sub_resource type="Animation" id="Animation_cicwn"]
@@ -372,7 +389,13 @@ tracks/0/keys = {
 "values": [Vector2(704, 117), Vector2(932, 117)]
 }
 
-[sub_resource type="Animation" id="Animation_lj1an"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rrs1j"]
+_data = {
+&"RESET": SubResource("Animation_lj1an"),
+&"move_right_left": SubResource("Animation_cicwn")
+}
+
+[sub_resource type="Animation" id="Animation_0yqnl"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -384,13 +407,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(704, 117)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rrs1j"]
-_data = {
-&"RESET": SubResource("Animation_lj1an"),
-&"move_right_left": SubResource("Animation_cicwn")
+"values": [Vector2(1200, 117)]
 }
 
 [sub_resource type="Animation" id="Animation_xxbfp"]
@@ -410,7 +427,13 @@ tracks/0/keys = {
 "values": [Vector2(1200, 117), Vector2(964, 117)]
 }
 
-[sub_resource type="Animation" id="Animation_0yqnl"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_45t7y"]
+_data = {
+&"RESET": SubResource("Animation_0yqnl"),
+&"move_left_right": SubResource("Animation_xxbfp")
+}
+
+[sub_resource type="Animation" id="Animation_80qnk"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -422,13 +445,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1200, 117)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_45t7y"]
-_data = {
-&"RESET": SubResource("Animation_0yqnl"),
-&"move_left_right": SubResource("Animation_xxbfp")
+"values": [Vector2(2125, 60)]
 }
 
 [sub_resource type="Animation" id="Animation_aqy51"]
@@ -448,7 +465,13 @@ tracks/0/keys = {
 "values": [Vector2(2125, 60), Vector2(2125, -77)]
 }
 
-[sub_resource type="Animation" id="Animation_80qnk"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cicwn"]
+_data = {
+&"RESET": SubResource("Animation_80qnk"),
+&"up_down": SubResource("Animation_aqy51")
+}
+
+[sub_resource type="Animation" id="Animation_45t7y"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -460,13 +483,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2125, 60)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cicwn"]
-_data = {
-&"RESET": SubResource("Animation_80qnk"),
-&"up_down": SubResource("Animation_aqy51")
+"values": [Vector2(1760, -60)]
 }
 
 [sub_resource type="Animation" id="Animation_rrs1j"]
@@ -486,21 +503,6 @@ tracks/0/keys = {
 "values": [Vector2(1760, -60), Vector2(1632, -60)]
 }
 
-[sub_resource type="Animation" id="Animation_45t7y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1760, -60)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lv3ay"]
 _data = {
 &"RESET": SubResource("Animation_45t7y"),
@@ -508,6 +510,7 @@ _data = {
 }
 
 [node name="level_4" type="Node2D"]
+script = ExtResource("1_rr1tt")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("hearts")]
 unique_name_in_owner = true
@@ -516,12 +519,13 @@ hearts = [NodePath("CanvasLayer/Hearts/HBoxContainer/Heart"), NodePath("CanvasLa
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
-[node name="ScoreLabel" type="Label" parent="GameManager/CanvasLayer"]
+[node name="CoinsLabel" type="Label" parent="GameManager/CanvasLayer"]
 modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 40
 text = "Coins: 0"
+script = ExtResource("2_rr1tt")
 
 [node name="Hearts" type="Panel" parent="GameManager/CanvasLayer"]
 anchors_preset = 1

@@ -138,16 +138,19 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ft8do"]
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
-collision_mask = 4
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("hearts") groups=["Enemy"]]
+collision_mask = 5
 wall_min_slide_angle = 0.0
 script = ExtResource("1_55jtl")
+hearts = [NodePath("HBoxContainer/TextureRect"), NodePath("HBoxContainer/TextureRect2"), NodePath("HBoxContainer/TextureRect3")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_ksmwx")
 animation = &"death"
 autoplay = "idle"
+frame = 4
+frame_progress = 1.0
 offset = Vector2(0, -6)
 
 [node name="detection_area" type="Area2D" parent="."]
@@ -167,7 +170,7 @@ position = Vector2(4, -1)
 shape = SubResource("CircleShape2D_55jtl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(-1, -6)
 shape = SubResource("CircleShape2D_mpr68")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]

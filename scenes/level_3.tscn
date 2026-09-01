@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dllt4ohy3kip"]
 
-[ext_resource type="Script" uid="uid://d0qcvf21hu21e" path="res://scripts/level_1.gd" id="1_h23n6"]
+[ext_resource type="Script" uid="uid://qx1vu5qd7tmn" path="res://scenes/level_3.gd" id="1_h23n6"]
 [ext_resource type="Texture2D" uid="uid://blg5btr1hj4n5" path="res://Screenshots/Screenshot 2026-07-19 124524.png" id="2_uwxec"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bswci"]
