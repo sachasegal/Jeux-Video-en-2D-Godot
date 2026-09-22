@@ -195,9 +195,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dt7fs")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -278,8 +278,8 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_31cv2")
 animation = &"hurt"
 autoplay = "Idle"
-frame = 1
-frame_progress = 0.9479032
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)

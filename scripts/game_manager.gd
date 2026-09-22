@@ -12,7 +12,7 @@ var lives = 3
 
 
 
-func decrease_health():
+func decrease_health(body):
 	if lives <= 0:
 		return
 	lives -= 1
@@ -22,8 +22,8 @@ func decrease_health():
 			hearts[h].show()
 		else:
 			hearts[h].hide()
-			
-		
+		if lives > 0:
+			body.play_hurt()
 			
 	if lives <= 0:
 		lives = 3
@@ -58,12 +58,3 @@ func spend_coins(amount):
 func attack_ennemy():
 	if Input.is_action_just_pressed("attack_ennemy"):
 		pass
-		
-		
-
-		
-
-
-		
-	
-	

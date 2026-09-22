@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://pyk6grko5nrq"]
+[gd_scene load_steps=16 format=3 uid="uid://pyk6grko5nrq"]
 
 [ext_resource type="Script" uid="uid://c32vxem4jvumb" path="res://scripts/shop_scene.gd" id="1_fdhsn"]
 [ext_resource type="Texture2D" uid="uid://cva4kqu8wcxcq" path="res://Screenshots/Screenshot 2026-06-03 185958.png" id="1_r1uou"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://7u2ldaol6boh" path="res://scenes/coins_label_shop_scene.gd" id="3_bk5ov"]
 [ext_resource type="Texture2D" uid="uid://cxxyjffqu6tuu" path="res://Screenshots/Screenshot 2026-06-03 193724-1.png (1).png" id="3_hovpq"]
 [ext_resource type="Texture2D" uid="uid://kng45ywa16rb" path="res://Screenshots/Screenshot 2026-06-03 193724-1.png (2).png" id="4_ykrk4"]
+[ext_resource type="AudioStream" uid="uid://bmxwj5eqpkf04" path="res://assets/sounds/floraphonic-arcade-ui-1-229498.mp3" id="8_27noo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ykrk4"]
 texture = ExtResource("2_p7evi")
@@ -61,7 +62,7 @@ script = ExtResource("1_fdhsn")
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("hearts")]
 unique_name_in_owner = true
 script = ExtResource("2_tvdqs")
-hearts = [NodePath(""), NodePath(""), NodePath("")]
+hearts = [null, null, null]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
@@ -183,6 +184,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fdhsn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tvdqs")
 text = "Buy (10 coins)"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Buttons to buy/buy_heart"]
+stream = ExtResource("8_27noo")
+
 [node name="buy_speed" type="Button" parent="Buttons to buy"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -206,6 +210,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fdhsn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tvdqs")
 text = "Buy (7 coins)"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Buttons to buy/buy_speed"]
+stream = ExtResource("8_27noo")
+
 [node name="buy_strength" type="Button" parent="Buttons to buy"]
 anchors_preset = 3
 anchor_left = 1.0
@@ -228,7 +235,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fdhsn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tvdqs")
 text = "Buy (8 coins)"
 
-[node name="go back" type="Button" parent="Buttons to buy"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Buttons to buy/buy_strength"]
+stream = ExtResource("8_27noo")
+
+[node name="close" type="Button" parent="Buttons to buy"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -245,9 +255,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_hovpq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ykrk4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fdhsn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tvdqs")
-text = "go back"
+text = "Close"
 
 [connection signal="pressed" from="Buttons to buy/buy_heart" to="." method="_on_buy_heart_pressed"]
 [connection signal="pressed" from="Buttons to buy/buy_speed" to="." method="_on_buy_speed_pressed"]
 [connection signal="pressed" from="Buttons to buy/buy_strength" to="." method="_on_buy_strength_pressed"]
-[connection signal="pressed" from="Buttons to buy/go back" to="." method="_on_go_back_pressed"]
+[connection signal="pressed" from="Buttons to buy/close" to="." method="_on_close_pressed"]

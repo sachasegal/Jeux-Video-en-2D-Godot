@@ -108,20 +108,5 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8dhm4")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lv2ng")
 text = "Exit"
 
-[node name="Options" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_7cgcr")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_axrv8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8dhm4")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_lv2ng")
-text = "Options"
-
 [connection signal="pressed" from="VBoxContainer/Next Level" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]

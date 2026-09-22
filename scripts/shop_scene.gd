@@ -3,27 +3,33 @@ extends Control
 const FILE_BEGIN = "res://scenes/level_"
 var score = Global.score
 
+@onready var audio_stream_player: AudioStreamPlayer = $"Buttons to buy/buy_speed/AudioStreamPlayer"
+
 
 
 func _on_buy_heart_pressed() -> void:
+	if GameManager.lives >= 3:
+		print("You already have max hearts")
+		return
 	if GameManager.spend_coins(10):
-		Global.lives += 1
-		var current_scene_file = get_tree().current_scene.scene_file_path
-		var next_level_number = current_scene_file.to_int() + 1
-		var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
-		get_tree().change_scene_to_file(next_level_path)
+		GameManager.lives += 1
+		$"Buttons to buy/buy_speed/AudioStreamPlayer".play()
+		await $"Buttons to buy/buy_speed/AudioStreamPlayer".finished
+		get_tree().change_scene_to_file(Global.next_level_path)
+	else:
+		print("You don't have enough money")
 	
 	
 
 func _on_buy_speed_pressed() -> void:
-	
 	if GameManager.spend_coins(7):
 		Global.SPEED +=20
-		
-		var current_scene_file = get_tree().current_scene.scene_file_path
-		var next_level_number = current_scene_file.to_int() + 1
-		var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
-		get_tree().change_scene_to_file(next_level_path)
+		$"Buttons to buy/buy_speed/AudioStreamPlayer".play()
+		await $"Buttons to buy/buy_speed/AudioStreamPlayer".finished
+		get_tree().change_scene_to_file(Global.next_level_path)
+	else:
+		print("You don't have enough money")
+	
 
 func _on_buy_strength_pressed() -> void:
 	pass
@@ -44,9 +50,9 @@ func _ready() -> void:
 	
 
 
-func _on_go_back_pressed() -> void:
-	var current_scene_file = get_tree().current_scene.scene_file_path
-	var next_level_number = current_scene_file.to_int() + 1
-		
-	var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
-	get_tree().change_scene_to_file(next_level_path)
+
+
+
+
+func _on_close_pressed() -> void:
+	get_tree().change_scene_to_file(Global.next_level_path)

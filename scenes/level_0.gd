@@ -8,3 +8,7 @@ func _ready() -> void:
 			GameManager.hearts[h].show()
 		else:
 			GameManager.hearts[h].hide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

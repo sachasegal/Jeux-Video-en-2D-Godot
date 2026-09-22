@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bximjtau5vrxd"]
+[gd_scene load_steps=27 format=3 uid="uid://bximjtau5vrxd"]
 
 [ext_resource type="Texture2D" uid="uid://cx4nedeqar8pd" path="res://assets/sprites/enemies sprites/slime.png" id="1_3gvst"]
 [ext_resource type="Script" uid="uid://c3fk8cmnvaive" path="res://scripts/enemy.gd" id="1_55jtl"]
@@ -23,6 +23,18 @@ region = Rect2(96, 384, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vja8"]
 atlas = ExtResource("1_3gvst")
 region = Rect2(128, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksmwx"]
+atlas = ExtResource("1_3gvst")
+region = Rect2(0, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq86d"]
+atlas = ExtResource("1_3gvst")
+region = Rect2(32, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joqoj"]
+atlas = ExtResource("1_3gvst")
+region = Rect2(64, 320, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iwav8"]
 atlas = ExtResource("1_3gvst")
@@ -88,6 +100,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ksmwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq86d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joqoj")
+}],
+"loop": false,
+"name": &"enemy_hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_iwav8")
 }, {
 "duration": 1.0,
@@ -131,7 +157,6 @@ animations = [{
 radius = 68.007355
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_55jtl"]
-radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mpr68"]
 radius = 7.0
@@ -147,10 +172,7 @@ hearts = [NodePath("HBoxContainer/TextureRect"), NodePath("HBoxContainer/Texture
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_ksmwx")
-animation = &"death"
-autoplay = "idle"
-frame = 4
-frame_progress = 1.0
+animation = &"enemy_hurt"
 offset = Vector2(0, -6)
 
 [node name="detection_area" type="Area2D" parent="."]
@@ -162,7 +184,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_oq86d")
 
 [node name="Hurt_Area" type="Area2D" parent="."]
-position = Vector2(-4, -2)
+position = Vector2(-5, -3)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_Area"]
@@ -170,10 +192,11 @@ position = Vector2(4, -1)
 shape = SubResource("CircleShape2D_55jtl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -6)
+position = Vector2(-1, -4)
 shape = SubResource("CircleShape2D_mpr68")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
+position = Vector2(-1, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 position = Vector2(0, -3)
@@ -200,6 +223,6 @@ texture = ExtResource("3_mpr68")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
-[connection signal="body_entered" from="Hurt_Area" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Hurt_Area" to="." method="_on_hurt_area_body_entered"]
+[connection signal="body_entered" from="Hurt_Area" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]

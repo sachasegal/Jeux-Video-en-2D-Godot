@@ -5,6 +5,13 @@ var attack_cooldown: float = 0.4
 
 var SPEED = Global.SPEED
 const JUMP_VELOCITY = -300.0
+var is_hurt = false
+
+func play_hurt() -> void:
+	is_hurt = true
+	animated_sprite.play("hurt")
+	await animated_sprite.animation_finished
+	is_hurt = false
 
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -32,11 +39,12 @@ func _physics_process(delta: float) -> void:
 		
 		# Play animations
 		
-		if is_on_floor():
-			if direction == 0:
-				animated_sprite.play("idle")
-			else:
-				animated_sprite.play("run")
+		if not is_hurt:
+			if is_on_floor():
+				if direction == 0:
+					animated_sprite.play("idle")
+				else:
+					animated_sprite.play("run")
 		
 	
 	if direction:
