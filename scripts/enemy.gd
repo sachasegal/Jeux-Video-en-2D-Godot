@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var hearts : Array[Node]
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-
+var damage_cooldown = 0.0
 var is_player_inside = false
 var health: int = 3
 var speed = 6
@@ -21,6 +21,12 @@ func enemy_hurt():
 
 
 func _physics_process(delta: float) -> void:
+	damage_cooldown -= delta
+	if damage_cooldown <= 0:
+		for body in $Hurt_Area.get_overlapping_bodies():
+			if body.is_in_group("Player"):
+				GameManager.decrease_health(body)
+				damage_cooldown = 1.0
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
@@ -58,7 +64,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 
 func _on_hurt_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		GameManager.decrease_health(body)
+		pass
 		
 		
 
@@ -71,11 +77,12 @@ func _on_enemy_hitbox_body_entered(body: Node2D) -> void:
 		
 func _input(event: InputEvent) -> void:
 	if is_player_inside and event.is_action_pressed("attack_ennemy"):
-		
-		enemy_live -= 1
-		hearts[enemy_live].hide()
-		enemy_hurt()
+		enemy_live = max(enemy_live - Global.damage, 0)
+		if enemy_live < hearts.size():
+			hearts[enemy_live].hide()
+			enemy_hurt()
 		if enemy_live == 0:
 			$AnimatedSprite2D.play("death")
+			await get_tree().create_timer(0.5).timeout
 			queue_free()
 		

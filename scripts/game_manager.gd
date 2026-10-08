@@ -27,6 +27,8 @@ func decrease_health(body):
 			
 	if lives <= 0:
 		lives = 3
+		score = 0
+		
 		get_tree().reload_current_scene()
 
 

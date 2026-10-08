@@ -381,7 +381,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAA
 tile_set = SubResource("TileSet_pbc48")
 
 [node name="Player" parent="." instance=ExtResource("3_wo48x")]
-position = Vector2(664, -471)
+position = Vector2(9, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(5, 5)
@@ -439,3 +439,41 @@ position = Vector2(515, -512)
 
 [node name="shop_area" parent="." instance=ExtResource("11_hey2k")]
 position = Vector2(797, -660)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="Node"]
+offset_left = 37.0
+offset_top = -64.0
+offset_right = 92.0
+offset_bottom = -41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "New level!"
+
+[node name="Label2" type="Label" parent="Node"]
+offset_left = 411.0
+offset_top = -106.0
+offset_right = 466.0
+offset_bottom = -83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "Getting harder!"
+
+[node name="Label3" type="Label" parent="Node"]
+offset_left = 455.0
+offset_top = -385.0
+offset_right = 537.0
+offset_bottom = -362.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "Watch out!"
+
+[node name="Label4" type="Label" parent="Node"]
+offset_left = 308.0
+offset_top = -593.0
+offset_right = 390.0
+offset_bottom = -570.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "Almost there"

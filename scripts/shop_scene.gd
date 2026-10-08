@@ -32,7 +32,15 @@ func _on_buy_speed_pressed() -> void:
 	
 
 func _on_buy_strength_pressed() -> void:
-	pass
+	if GameManager.spend_coins(8):
+		Global.damage = 2
+		$"Buttons to buy/buy_speed/AudioStreamPlayer".play()
+		await $"Buttons to buy/buy_speed/AudioStreamPlayer".finished
+		get_tree().change_scene_to_file(Global.next_level_path)
+	else:
+		print("You don't have enough money")
+		
+	
 	
 
 

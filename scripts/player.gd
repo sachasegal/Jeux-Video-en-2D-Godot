@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
+@onready var grapplecontroller := $GrappleController
+
+const ACCELERATION = 0.1
+const DECELERATION = 0.1
 var can_attack: bool = true
 var attack_cooldown: float = 0.4
-
 var SPEED = Global.SPEED
 const JUMP_VELOCITY = -300.0
 var is_hurt = false
+
 
 func play_hurt() -> void:
 	is_hurt = true
@@ -20,13 +24,16 @@ func play_hurt() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or grapplecontroller.launched):
+		velocity.y += JUMP_VELOCITY
+		grapplecontroller.retract()
 
 	#Get the input direction: -1, 0, 1
 	var direction := Input.get_axis("move_left", "move_right")
@@ -48,9 +55,9 @@ func _physics_process(delta: float) -> void:
 		
 	
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = lerp(velocity.x, SPEED * direction, ACCELERATION)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = lerp(velocity.x, 0.0, DECELERATION)
 
 	move_and_slide()
 	
@@ -61,6 +68,7 @@ func _input(event):
 	if event.is_action_pressed("attack_ennemy"):
 		$AnimatedSprite2D.play("attack")
 		timer.start()
+
 		
 
 
